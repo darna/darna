@@ -1,6 +1,11 @@
-p
-  ' API Token: 
+h1 Let's Get the Party Started.
+pre
+  'API Token:
   = current_user.auth_token
+.well
+  h3 Keep your token safe and secure!
+p.lead
+  'An access token is an object encapsulating the security identity of a process or thread.[1] A token is used to make security decisions and to store tamper-proof information about some system entity. While a token is generally used to represent only security information, it is capable of holding additional free-form data that can be attached while the token is being created.
 = link_to 'Create a new project', new_project_path
 br
 br
