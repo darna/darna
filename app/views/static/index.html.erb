@@ -22,8 +22,33 @@
             <li><a href="#python" role="tab" data-toggle="tab">Python</a></li>
           </ul>
           <div class="tab-content landing-terminal-text-container">
-            <pre id="ruby" class="tab-pane active landing-terminal-text">$ gem install darna</pre>
-            <pre id="javascript" class="tab-pane landing-terminal-text">$ npm install official-darnatics</pre>
+            <div id="ruby" class="tab-pane active">
+              <span class='text-center landing-terminal-text'>$ gem install darna</span>
+              <pre style="text-align: left">
+                require 'darna'
+
+                Darna.configure do |c|
+                  c.auth_token = 'YOUR_TOKEN_HERE'
+                  c.project = 'PROJECT_NAME'
+                end
+
+                collection = Darna.retrieve 'collection-name'
+                puts collection #yay!
+              </pre>
+            </div>
+            <div id="javascript" class="tab-pane">
+              <span class='text-center landing-terminal-text'>$ bower install darna</span>
+              <pre style="text-align: left">
+                Darna.configure({
+                  project: 'name-of-your-project',
+                  authToken: 'auth-token-here'
+                });
+
+                Darna.retrive('collection-name', function(data) {
+                  console.log(data); // yay!
+                });
+              </pre>
+            </div>
             <pre id="python" class="tab-pane landing-terminal-text">$ pip install official-darnatics</pre>
           </div>
         </div>
