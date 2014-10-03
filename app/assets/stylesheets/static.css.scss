@@ -1,5 +1,5 @@
 .landing-background {
-  background-color: green;
+  background-image: url('peoplez.jpg');
   background-attachment: fixed;
   background-size: cover;
   height: 960px;
@@ -21,7 +21,8 @@
 }
 
 .landing-cycler-text {
-  text-decoration: underline;
+  color: #2B3E50;
+  font-weight: bolder;
 }
 
 .btn-call-to-action {
