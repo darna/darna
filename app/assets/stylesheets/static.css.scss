@@ -1,3 +1,11 @@
-// Place all the styles related to the static controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.landing-background {
+  background-image: url('landingngtataymo.jpg');
+  background-size: cover;
+  height: 960px;
+  margin-top: -20px;
+  padding: 20em;
+  text-align: center;
+  h1 {
+    font-size: 6em;
+  }
+}
