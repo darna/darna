@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003083208) do
+ActiveRecord::Schema.define(version: 20141003084814) do
 
 # Could not dump table "projects" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20141003083208) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "route"
+    t.text     "value"
   end
 
   add_index "things", ["project_id"], name: "index_things_on_project_id"
