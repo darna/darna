@@ -1,11 +1,31 @@
 class ThingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_project
 
-  def create
-
+  def index
+    @things = @project.things
   end
 
-  def destroy
+  def new
+    @thing = @project.things.new
+  end
 
+  def create
+    @thing = @project.things.new(obj_params)
+
+    if @thing.save
+      redirect_to project_things_path(@project)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def obj_params
+    params.require(:thing).permit :route, :value
+  end
+
+  def set_project
+    @project = Project.find params[:project_id]
   end
 end
