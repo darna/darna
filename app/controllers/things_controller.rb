@@ -2,8 +2,8 @@ class ThingsController < ApplicationController
   protect_from_forgery with: :null_session
 
   before_action :authenticate_user_from_token!, only: [:get_api, :post_api]
-  before_action :authenticate_user!, except: [:get_api, :post_api]
-  before_action :set_project
+  before_action :authenticate_user!, except: [:get_api, :post_api, :ping]
+  before_action :set_project, except: :ping
 
   def index
     @things = @project.things
@@ -25,6 +25,11 @@ class ThingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def ping
+    user = User.find_by_auth_token(params[:auth_token])
+    render text: (user.nil? ? nil : 'pong')
   end
 
   def get_api
