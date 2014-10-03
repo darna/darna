@@ -1,26 +1,39 @@
-body.landing {
-  background-color: #FFF;
-}
 .landing-background {
   background-color: green;
   background-attachment: fixed;
   background-size: cover;
   height: 960px;
   margin-top: -20px;
-  padding: 20em;
+  padding: 10em;
   text-align: center;
   h1 {
     font-size: 6em;
   }
 }
 
-.landing-icon-tray {
+.landing-coding-instructions {
+  border-radius: 32px;
   color: #333;
+  font-size: 2em;
+  margin-bottom: 5em;
   margin-top: 2em;
   text-align: center;
 }
 
 .landing-cycler-text {
   text-decoration: underline;
+}
+
+.btn-call-to-action {
+  font-style: 1.5em;
+  margin-top: 1em;
+}
+
+.landing-terminal-text-container{
+  background-color: #FFF;
+}
+
+.landing-terminal-text {
+  font-size: 1em;
 
 }
