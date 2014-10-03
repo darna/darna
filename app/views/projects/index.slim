@@ -1,15 +1,17 @@
-h1 Let's Get the Party Started.
-pre
-  'API Token:
-  = current_user.auth_token
-.well
-  h3 Keep your token safe and secure!
-p.lead
-  'An access token is an object encapsulating the security identity of a process or thread.[1] A token is used to make security decisions and to store tamper-proof information about some system entity. While a token is generally used to represent only security information, it is capable of holding additional free-form data that can be attached while the token is being created.
-= link_to 'Create a new project', new_project_path
-br
-br
-
-- for p in @projects
-  = link_to p.name, p
-  br
+.row
+  .col-md-12
+    h1 Your Projects
+  .col-md-8
+    - for p in @projects
+      div.project-div
+        h2
+          = link_to p.name, p
+    h2
+      = link_to 'Create a new project', new_project_path, class: "btn btn-primary"
+  .col-md-4
+    .well
+      p.lead Keep your token safe and secure!
+    pre
+      'API Token:
+      br
+      = current_user.auth_token
