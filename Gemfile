@@ -32,4 +32,5 @@ gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.0.0'
 
 gem 'pg', group: :production
+gem 'devise-bootstrap-views'
 
