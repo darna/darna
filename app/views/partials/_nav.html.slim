@@ -11,8 +11,9 @@ nav.navbar.navbar-default role="navigation"
     /! Collect the nav links, forms, and other content for toDarna!
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
-          a href="#"  Link
+        - if user_signed_in? 
+          li
+            = link_to 'Projects', projects_path
         li
           a href="#"  Link
         li.dropdown

@@ -1,2 +1,7 @@
+= link_to 'Create a new project', new_project_path
+br
+br
+
 - for p in @projects
-  = p.name
+  = link_to p.name, p
+  br
