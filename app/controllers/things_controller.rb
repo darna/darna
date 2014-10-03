@@ -11,7 +11,7 @@ class ThingsController < ApplicationController
   end
 
   def show
-    @thing = @project.things.find params[:id]
+    @thing = @project.things.friendly.find params[:id]
   end
 
   def create
@@ -25,16 +25,17 @@ class ThingsController < ApplicationController
   end
 
   def get_api
-    @thing = @project.things.find params[:id]
-    render_json_thing
+    @thing = @project.things.friendly.find params[:id]
+    value = JSON.parse(@thing.value) rescue {}
+    render json: value
   end
 
   def post_api
-    @thing = @project.things.find(obj_params[:name]) rescue @project.things.new(name: obj_params[:name])
+    @thing = @project.things.where(name: obj_params[:name]).first_or_initialize
     @thing.value = params.require(:thing)[:value].to_json
 
     if @thing.save
-      render_json_thing
+      render json: @thing.to_json
     else
       render json: @thing.errors.full_messages
     end
@@ -47,11 +48,7 @@ class ThingsController < ApplicationController
   end
 
   def set_project
-    @project = Project.find params[:project_id]
+    @project = Project.friendly.find params[:project_id]
   end
 
-  def render_json_thing
-    value = JSON.parse(@thing.value) rescue {}
-    render json: value
-  end
 end
