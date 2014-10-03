@@ -2,7 +2,7 @@ body.landing {
   background-color: #FFF;
 }
 .landing-background {
-  background: url('landingngtataymo.jpg') no-repeat center center;
+  background-color: green;
   background-attachment: fixed;
   background-size: cover;
   height: 960px;
@@ -18,4 +18,9 @@ body.landing {
   color: #333;
   margin-top: 2em;
   text-align: center;
+}
+
+.landing-cycler-text {
+  text-decoration: underline;
+
 }
