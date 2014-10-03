@@ -1,4 +1,8 @@
 class ThingsController < ApplicationController
+  protect_from_forgery with: :null_session
+
+  before_action :authenticate_user_from_token!, only: [:get_api, :post_api]
+  before_action :authenticate_user!, except: [:get_api, :post_api]
   before_action :set_project
 
   def index
@@ -10,7 +14,7 @@ class ThingsController < ApplicationController
   end
 
   def show
-    @thing = @project.things.find params[:id]
+    @thing = @project.things.friendly.find params[:id]
   end
 
   def create
@@ -23,6 +27,23 @@ class ThingsController < ApplicationController
     end
   end
 
+  def get_api
+    @thing = @project.things.friendly.find params[:id]
+    value = JSON.parse(@thing.value) rescue {}
+    render json: value
+  end
+
+  def post_api
+    @thing = @project.things.where(name: obj_params[:name]).first_or_initialize
+    @thing.value = params.require(:thing)[:value].to_json
+
+    if @thing.save
+      render json: @thing.to_json
+    else
+      render json: @thing.errors.full_messages
+    end
+  end
+
   private
 
   def obj_params
@@ -30,6 +51,7 @@ class ThingsController < ApplicationController
   end
 
   def set_project
-    @project = Project.find params[:project_id]
+    @project = current_user.projects.friendly.find params[:project_id]
   end
+
 end
