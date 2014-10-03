@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    if token = params[:authentication_token]
+    if token = params[:auth_token]
       User.find_by_auth_token token
     else
       super
