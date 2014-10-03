@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003112423) do
+ActiveRecord::Schema.define(version: 20141003122122) do
 
 # Could not dump table "projects" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141003112423) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

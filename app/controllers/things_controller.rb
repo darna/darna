@@ -1,5 +1,8 @@
 class ThingsController < ApplicationController
   protect_from_forgery with: :null_session
+
+  before_action :authenticate_user_from_token!, only: [:get_api, :post_api]
+  before_action :authenticate_user!, except: [:get_api, :post_api]
   before_action :set_project
 
   def index
@@ -48,7 +51,7 @@ class ThingsController < ApplicationController
   end
 
   def set_project
-    @project = Project.friendly.find params[:project_id]
+    @project = current_user.projects.friendly.find params[:project_id]
   end
 
 end

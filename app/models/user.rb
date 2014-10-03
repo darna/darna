@@ -5,4 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects
+
+  before_create :assign_token
+
+  def self.find_by_auth_token token
+    User.find_by_auth_token token
+  end
+
+  def assign_token
+    self.auth_token = SecureRandom.hex
+  end
 end

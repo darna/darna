@@ -1,19 +1,20 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
   end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.new
   end
 
   def show
-    @project = Project.friendly.find params[:id]
+    @project = current_user.projects.friendly.find params[:id]
   end
 
   def create
-    @project = Project.new(obj_params)
+    @project = current_user.projects.new(obj_params)
 
     if @project.save
       redirect_to projects_path
